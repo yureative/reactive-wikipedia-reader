@@ -1,0 +1,1 @@
+export const DEFAULT_NUM_OF_WIKI_PAGES = 10
