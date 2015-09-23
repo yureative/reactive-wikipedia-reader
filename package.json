@@ -24,6 +24,7 @@
     "extract-text-webpack-plugin": "^0.8.2",
     "file-loader": "^0.8.4",
     "html-webpack-plugin": "^1.6.1",
+    "http-server": "^0.8.4",
     "image-webpack-loader": "^1.6.1",
     "jsx-loader": "^0.13.2",
     "mocha": "^2.3.3",
@@ -36,7 +37,6 @@
     "webpack-dev-server": "^1.11.0"
   },
   "dependencies": {
-    "http-server": "^0.8.4",
     "react": "^0.13.3",
     "react-redux": "^2.1.2",
     "redux": "^3.0.0",
