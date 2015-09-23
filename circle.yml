@@ -1,0 +1,14 @@
+machine:
+  node:
+    version: 0.12
+
+dependencies:
+  post:
+    - npm run build
+
+deployment:
+  production:
+    branch: master
+    commands:
+      - sudo pip install awscli
+      - aws s3 sync --delete public/ s3://reactive-wikipedia-reader/
