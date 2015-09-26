@@ -1,16 +1,18 @@
 import React, { Component, PropTypes } from 'react'
+import { Router, Route, Link } from 'react-router'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import '../assets/styles/main.scss'
 import Header from '../components/Header'
-import MainSection from '../components/MainSection'
+import WikiPageList from '../components/WikiPageList'
 import * as WikiPageActions from '../actions/wikiPage'
 
 class App extends Component {
   static get propTypes() {
     return {
       wikiPages: PropTypes.array.isRequired,
-      dispatch: PropTypes.func.isRequired
+      dispatch: PropTypes.func.isRequired,
+      children: PropTypes.node
     }
   }
 
@@ -21,9 +23,9 @@ class App extends Component {
     return (
       <div>
         <Header />
-        <MainSection
-          wikiPages={wikiPages}
-          refreshWikiPages={actions.refreshWikiPages} />
+        <section className="main">
+          {this.props.children}
+        </section>
       </div>
     )
   }
