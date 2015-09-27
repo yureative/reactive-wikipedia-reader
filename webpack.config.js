@@ -1,6 +1,7 @@
 var DEBUG = process.env.NODE_ENV !== 'production' ? true : false;
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var webpack = require('webpack');
 
 function getEntrySources(sources) {
   if (DEBUG) {
@@ -8,6 +9,12 @@ function getEntrySources(sources) {
     sources.push('webpack/hot/only-dev-server');
   }
   return sources;
+}
+function getPlugins(plugins) {
+  if (!DEBUG) {
+    plugins.push(new webpack.optimize.UglifyJsPlugin());
+  }
+  return plugins;
 }
 
 module.exports = {
@@ -31,13 +38,13 @@ module.exports = {
       }
     ]
   },
-  plugins: [
+  plugins: getPlugins([
     new HtmlWebpackPlugin({
       title: 'Reactive Wikipedia Reader',
       favicon: './app/assets/images/icon/favicon.ico'
     }),
     new ExtractTextPlugin('assets/style.css', {allChunks: true})
-  ],
+  ]),
   entry: {
     bundle: getEntrySources([
       './app/index'
