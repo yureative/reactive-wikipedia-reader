@@ -1,8 +1,9 @@
+var DEBUG = process.env.NODE_ENV !== 'production' ? true : false;
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 function getEntrySources(sources) {
-  if (process.env.NODE_ENV !== 'production') {
+  if (DEBUG) {
     sources.push('webpack-dev-server/client?http://localhost:8080');
     sources.push('webpack/hot/only-dev-server');
   }
@@ -19,7 +20,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        loader: ExtractTextPlugin.extract('css!sass')
+        loader: DEBUG ? 'style!css!sass' : ExtractTextPlugin.extract('css!sass')
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
