@@ -15,9 +15,8 @@ body {
           display: block;
           background: rgb(110, 117, 145);
           color: white;
-          font-weight: bold;
           font-size: 110%;
-          padding: 5px 14px;
+          padding: 5px 16px;
           text-decoration: none;
           border-radius: 3px;
           &:hover {
@@ -81,6 +80,29 @@ body {
       clear: both;
       button {
         padding: 4px 14px;
+      }
+    }
+    .back-previous-page {
+      a {
+        text-decoration: none;
+        text-align: center;
+        color: black;
+        display: block;
+        padding: 5px 10px;
+        background-color: rgb(208, 207, 210);
+        border-radius: 4px;
+        &:hover {
+          background-color: rgb(144, 152, 161);
+        }
+        * {
+          vertical-align: middle;
+          height: 1em;
+        }
+      }
+    }
+    .wiki-page {
+      h2 {
+        padding: 0;
       }
     }
   }

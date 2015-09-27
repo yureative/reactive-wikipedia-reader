@@ -1,3 +1,4 @@
+import 'babel/polyfill'
 import React from 'react'
 import createBrowserHistory from 'history/lib/createBrowserHistory'
 import configureStore from './store/configureStore'
