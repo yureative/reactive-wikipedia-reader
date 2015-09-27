@@ -31,7 +31,10 @@ module.exports = {
     ]
   },
   plugins: [
-    new HtmlWebpackPlugin({title: 'Reactive Wikipedia Reader'}),
+    new HtmlWebpackPlugin({
+      title: 'Reactive Wikipedia Reader',
+      favicon: './app/assets/images/icon/favicon.ico'
+    }),
     new ExtractTextPlugin('/assets/style.css', {allChunks: true})
   ],
   entry: {
