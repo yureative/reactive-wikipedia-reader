@@ -29,7 +29,7 @@ export function fetchWikipediaPageDetail(pageId) {
   let params = {
     action: 'query',
     pageids: pageId,
-    prop: 'categories',
+    prop: 'categories|images',
     format: 'json'
   }
 
@@ -43,10 +43,36 @@ export function fetchWikipediaPageDetail(pageId) {
     return {
       id: pageId,
       title: page.title,
-      categories: page.categories.map(cat =>
+      images: page.images ? page.images.map(img =>
+        ({ title: img.title })
+      ) : [],
+      categories: page.categories ? page.categories.map(cat =>
         cat.title.replace(/^Category:/, '')
-      )
+      ) : []
     }
+  })
+}
+
+export function fetchWikipediaImagesWithUrl(imageTitles) {
+  let client = wikipediaClient()
+  let params = {
+    action: 'query',
+    titles: imageTitles.join('|'),
+    prop: 'imageinfo',
+    iiprop: 'url',
+    format: 'json'
+  }
+
+  return client.query(params).end().then(res => {
+    if (!(res.body.query && res.body.query.pages)) {
+      console.error(res)
+      throw new Error('Could not find query results from Wikipedia API')
+    }
+
+    let pages = res.body.query.pages
+    return Object.keys(pages).map(key =>
+      ({ title: pages[key].title, url: pages[key].imageinfo[0].url })
+    )
   })
 }
 

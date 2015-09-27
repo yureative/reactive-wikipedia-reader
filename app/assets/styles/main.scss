@@ -3,6 +3,9 @@ $img_path: '../images/';
 body {
   background: url('#{$img_path}bg/light_alu.png') repeat;
 
+  .error {
+    color: red;
+  }
   .header {
     margin: 0 10px;
     ul.nav {
@@ -100,9 +103,25 @@ body {
         }
       }
     }
-    .wiki-page {
+    .wiki-page-detail {
       h2 {
         padding: 0;
+      }
+      .wiki-page-image {
+        ul {
+          list-style-type: none;
+          padding: 0;
+          li {
+            float: left;
+          }
+        }
+        img {
+          width: 150px;
+          height: 150px;
+        }
+      }
+      .wiki-page-category {
+        clear: both;
       }
     }
   }

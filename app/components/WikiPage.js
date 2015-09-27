@@ -23,6 +23,15 @@ class WikiPage extends Component {
       page ?
         <div className="wiki-page-detail">
           <h2>{page.title}</h2>
+          {page.images ?
+            <div className="wiki-page-image">
+              <ul>
+                {page.images.map(img =>
+                  <li key={img.title}><img src={img.url} /></li>
+                )}
+              </ul>
+            </div>
+          : ''}
           <div className="wiki-page-category">
             <h3>Categories</h3>
             <ul>

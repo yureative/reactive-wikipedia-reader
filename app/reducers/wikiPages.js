@@ -11,15 +11,14 @@ export default function wikiPages(state = [], action) {
 
   case UPDATE_WIKI_PAGE_DETAIL_STARTED:
     return state.map(page =>
-      page.id === action.pageId ?
+      page.id == action.pageId ?
         Object.assign(page, { categories: ['Loading...'] }) :
         page
     )
 
   case UPDATE_WIKI_PAGE_DETAIL_COMPLETED:
-    console.log(action.wikiPage)
     return state.map(page =>
-      page.id === action.wikiPage.id ?
+      page.id == action.wikiPage.id ?
         Object.assign(page, action.wikiPage, { detailed: true }) :
         page
     )
