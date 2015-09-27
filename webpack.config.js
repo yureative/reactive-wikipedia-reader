@@ -24,7 +24,7 @@ module.exports = {
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
         loaders: [
-          'file?name=/assets/images/[name].[ext]?[hash]',
+          'file?name=assets/images/[name].[ext]?[hash]',
           'image-webpack?bypassOnDebug&optimizationLevel=7'
         ]
       }
@@ -35,7 +35,7 @@ module.exports = {
       title: 'Reactive Wikipedia Reader',
       favicon: './app/assets/images/icon/favicon.ico'
     }),
-    new ExtractTextPlugin('/assets/style.css', {allChunks: true})
+    new ExtractTextPlugin('assets/style.css', {allChunks: true})
   ],
   entry: {
     bundle: getEntrySources([
@@ -44,6 +44,7 @@ module.exports = {
   },
   output: {
     path: 'public',
-    filename: '/assets/[name].js'
+    publicPath: '/',
+    filename: 'assets/[name].js'
   }
 }
