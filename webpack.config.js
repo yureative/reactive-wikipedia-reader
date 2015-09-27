@@ -32,7 +32,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({title: 'Reactive Wikipedia Reader'}),
-    new ExtractTextPlugin('assets/style.css', {allChunks: true})
+    new ExtractTextPlugin('/assets/style.css', {allChunks: true})
   ],
   entry: {
     bundle: getEntrySources([
@@ -41,6 +41,6 @@ module.exports = {
   },
   output: {
     path: 'public',
-    filename: 'assets/[name].js'
+    filename: '/assets/[name].js'
   }
 }
