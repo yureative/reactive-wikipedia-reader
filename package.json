@@ -4,10 +4,10 @@
   "description": "Reactive Wikipedia Reader",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --progress --colors",
+    "build": "webpack --colors",
     "test": "mocha --compilers js:babel/register --recursive",
     "test:watch": "npm test -- --watch",
-    "start": "NODE_ENV=production http-server public"
+    "start": "http-server public"
   },
   "author": "Yu Yamanaka <yuu@relx.jp>",
   "license": "ISC",

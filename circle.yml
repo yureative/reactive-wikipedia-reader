@@ -1,6 +1,8 @@
 machine:
   node:
     version: 0.12
+  environment:
+    NODE_ENV: production
 
 dependencies:
   post:
