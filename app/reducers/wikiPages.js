@@ -11,7 +11,7 @@ export default function wikiPages(state = [], action) {
 
   case UPDATE_WIKI_PAGE_DETAIL_STARTED:
     return state.map(page =>
-      page.id == action.pageId ?
+      (page.id == action.pageId && !page.categories) ?
         Object.assign(page, { categories: ['Loading...'] }) :
         page
     )
