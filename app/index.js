@@ -1,6 +1,6 @@
 import 'babel/polyfill'
 import React from 'react'
-import createBrowserHistory from 'history/lib/createBrowserHistory'
+import createHashHistory from 'history/lib/createHashHistory'
 import configureStore from './store/configureStore'
 import { Provider } from 'react-redux'
 import { Router, Route, IndexRoute } from 'react-router'
@@ -8,7 +8,7 @@ import App from './containers/App'
 import WikiPageList from './components/WikiPageList'
 import WikiPage from './components/WikiPage'
 
-const history = createBrowserHistory()
+const history = createHashHistory()
 const store = configureStore()
 
 React.render(
