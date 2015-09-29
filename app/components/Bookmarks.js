@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
-import { removeFromBookmarks } from '../actions/bookmarks'
+import { removeFromBookmarks, searchBookmarks } from '../actions/bookmarks'
 
 class Bookmarks extends Component {
   static get propTypes() {
@@ -11,8 +11,26 @@ class Bookmarks extends Component {
     }
   }
 
+  constructor(props, context) {
+    super(props, context)
+    this.state = { searchWord: '' }
+  }
+
+  filterBookmarks(bookmarks) {
+    const { searchWord } = this.state
+    if (searchWord.length > 0) {
+      return bookmarks.filter(x =>
+        x.title.toLowerCase().indexOf(searchWord.toLowerCase()) > -1
+      )
+    } else {
+      return bookmarks
+    }
+  }
+
   render() {
     const { bookmarks, dispatch } = this.props
+    const { filter } = this.state
+    const filteredBookmarks = this.filterBookmarks(bookmarks)
 
     return (
       <div>
@@ -20,21 +38,29 @@ class Bookmarks extends Component {
         {bookmarks.length == 0 ?
           <p>No bookmarks.</p>
         :
-          <ul className="wiki-page-list">
-            {bookmarks.map(page =>
-              <li key={page.id}>
-                <Link to={`/bookmark/${page.id}`}>
-                  <img className="icon" src={require('../assets/images/icon/arrow-right-01.svg')} />
-                  {page.title}
-                </Link>
-                <div className="action-button">
-                  <img className="icon delete"
-                       onClick={this.onDeleteBookmark.bind(this, page.id)}
-                       src={require('../assets/images/icon/remove-01.svg')} />
-                </div>
-              </li>
-            )}
-          </ul>
+          <div>
+            <div className="bookmark-search">
+              <input className="bookmark-search-form"
+                     type="text"
+                     placeholder="Search..."
+                     onChange={this.onSearchBookmarks.bind(this)} />
+            </div>
+            <ul className="wiki-page-list">
+              {filteredBookmarks.map(page =>
+                <li key={page.id}>
+                  <Link to={`/bookmark/${page.id}`}>
+                    <img className="icon" src={require('../assets/images/icon/arrow-right-01.svg')} />
+                    {page.title}
+                  </Link>
+                  <div className="action-button">
+                    <img className="icon delete"
+                         onClick={this.onDeleteBookmark.bind(this, page.id)}
+                         src={require('../assets/images/icon/remove-01.svg')} />
+                  </div>
+                </li>
+              )}
+            </ul>
+          </div>
         }
       </div>
     )
@@ -42,6 +68,10 @@ class Bookmarks extends Component {
 
   onDeleteBookmark(pageId) {
     this.props.dispatch(removeFromBookmarks(pageId))
+  }
+
+  onSearchBookmarks(event) {
+    this.setState({ searchWord: event.target.value })
   }
 }
 
