@@ -1,25 +1,19 @@
 import React, { Component, PropTypes } from 'react'
 import { Link } from 'react-router'
 import { connect } from 'react-redux'
-import { updateWikiPageDetail } from '../actions/wikiPage'
-import { addToBookmarks } from '../actions/bookmarks'
+import { updateBookmarkedPageDetail } from '../actions/bookmarks'
 
-class WikiPage extends Component {
+class BookmarkedPage extends Component {
   static get propTypes() {
     return {
-      wikiPages: PropTypes.array.isRequired,
-      dispatch: PropTypes.func.isRequired,
+      bookmarks: PropTypes.array.isRequired,
       params: PropTypes.object.isRequired
     }
   }
 
-  componentWillMount() {
-    this.props.dispatch(updateWikiPageDetail(this.props.params.id))
-  }
-
   render() {
-    const { wikiPages, dispatch, params } = this.props
-    const page = wikiPages.find(x => x.id == params.id)
+    const { bookmarks, params } = this.props
+    const page = bookmarks.find(x => x.id == params.id)
 
     return (
       <div className="wiki-page">
@@ -45,27 +39,20 @@ class WikiPage extends Component {
             </div>
           </div>
         :
-          <div className="wiki-page-detail">ERROR: Cannot find the wiki page</div>
+          <p class="error">ERROR: Cannot find the wiki page</p>
         }
         <div className="back-previous-page">
-          <Link to="/">
+          <Link to="/bookmarks">
             <img className="icon" src={require('../assets/images/icon/arrow-left-01.svg')} />
             BACK
           </Link>
         </div>
         {page ?
           <div className="bookmark-page">
-            {page.bookmarked ?
-              <div className="wiki-page-bookmarked">
-                <img className="icon" src={require('../assets/images/icon/done-01.svg')} />
-                Bookmarked
-              </div>
-            :
-              <a onClick={() => dispatch(addToBookmarks(page))}>
-                <img className="icon" src={require('../assets/images/icon/star-circle.svg')} />
-                Bookmark
-              </a>
-            }
+            <div className="wiki-page-bookmarked">
+              <img className="icon" src={require('../assets/images/icon/done-01.svg')} />
+              Bookmarked
+            </div>
           </div>
         : ''}
       </div>
@@ -74,5 +61,5 @@ class WikiPage extends Component {
 }
 
 export default connect(state => ({
-  wikiPages: state.wikiPages
-}))(WikiPage)
+  bookmarks: state.bookmarks
+}))(BookmarkedPage)
