@@ -41,7 +41,9 @@ module.exports = {
   plugins: getPlugins([
     new HtmlWebpackPlugin({
       title: 'Reactive Wikipedia Reader',
-      favicon: './app/assets/images/icon/favicon.ico'
+      favicon: './app/assets/images/icon/favicon.ico',
+      template: './app/index.html',
+      inject: 'body'
     }),
     new ExtractTextPlugin('assets/style.css', {allChunks: true})
   ]),

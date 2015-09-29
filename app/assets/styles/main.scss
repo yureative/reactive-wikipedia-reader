@@ -7,7 +7,7 @@ body {
     color: red;
   }
   .header {
-    margin: 0 10px;
+    margin: 10px;
     ul.nav {
       padding: 0;
       list-style-type: none;
@@ -38,8 +38,8 @@ body {
   }
 
   .main {
+    margin: 10px;
     clear: both;
-    margin: 0 10px;
     .bookmark-header {
       display: table;
       h2 {
@@ -62,7 +62,7 @@ body {
       border-radius: 4px;
       list-style-type: none;
       padding: 0;
-      max-width: 500px;
+      max-width: 450px;
       li {
         display: table;
         width: 100%;
@@ -91,9 +91,10 @@ body {
           }
         }
         .action-button {
-          width: 30px;
+          width: 20px;
           display: table-cell;
           padding: 0 8px;
+          text-align: left;
           .icon {
             cursor: pointer;
             width: 16px;
@@ -126,9 +127,8 @@ body {
         border-style: none;
         text-align: center;
         color: black;
-        width: 200px;
-        margin: 0 10px 0 0;
-        padding: 5px 10px;
+        margin: 0 10px 20px 0;
+        padding: 6px 20px;
         border-radius: 4px;
         float: left;
         .icon {
@@ -153,16 +153,14 @@ body {
     }
     .wiki-page-detail {
       .wiki-page-detail-header {
-        display: table;
         margin: 0 0 30px 0;
         h2 {
-          display: table-cell;
           padding: 0;
         }
         .wiki-page-original-link {
-          display: table-cell;
-          padding-left: 20px;
+          margin-top: -10px;
           font-size: 95%;
+          color: rgb(50, 50, 50);
           a {
             color: rgb(50, 50, 50);
             padding: 0 1px 0 2px;
