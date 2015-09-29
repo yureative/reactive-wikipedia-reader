@@ -16,6 +16,7 @@ class WikiPageList extends Component {
 
     return (
       <div>
+        <h2>Home</h2>
         <ul className="wiki-page-list">
           {wikiPages.map(page =>
             <li key={page.id}>
