@@ -19,7 +19,19 @@ class BookmarkedPage extends Component {
       <div className="wiki-page">
         {page ?
           <div className="wiki-page-detail">
-            <h2>{page.title}</h2>
+            <div className="wiki-page-detail-header">
+              <h2>{page.title}</h2>
+              {page.originalUrl ?
+                <p className="wiki-page-original-link">
+                  [
+                    <a target="_blank" href={page.originalUrl}>
+                      Read on Wikipedia
+                      <img className="icon" src={require('../assets/images/icon/link-external.svg')} />
+                    </a>
+                  ]
+                </p>
+              : ''}
+            </div>
             {page.images ?
               <div className="wiki-page-image">
                 <ul>
