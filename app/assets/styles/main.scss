@@ -40,13 +40,22 @@ body {
   .main {
     clear: both;
     margin: 0 10px;
-    .bookmark-search {
-      .bookmark-search-form {
-        padding: 6px 15px 6px 30px;
-        border-radius: 15px;
-        border: 1px solid rgb(172, 177, 183);
-        background: white url(#{$img_path}/icon/search-01.svg) no-repeat 8px 6px;
-        background-size: 15px;
+    .bookmark-header {
+      display: table;
+      h2 {
+        display: table-cell;
+      }
+      .bookmark-search {
+        display: table-cell;
+        padding-left: 30px;
+        vertical-align: top;
+        .bookmark-search-form {
+          padding: 6px 15px 6px 30px;
+          border-radius: 15px;
+          border: 1px solid rgb(172, 177, 183);
+          background: white url(#{$img_path}/icon/search-01.svg) no-repeat 8px 6px;
+          background-size: 15px;
+        }
       }
     }
     ul.wiki-page-list {

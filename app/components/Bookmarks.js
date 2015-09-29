@@ -34,16 +34,21 @@ class Bookmarks extends Component {
 
     return (
       <div>
-        <h2>Bookmarks</h2>
         {bookmarks.length == 0 ?
-          <p>No bookmarks.</p>
+          <div>
+            <h2>Bookmarks</h2>
+            <p>No bookmarks.</p>
+          </div>
         :
           <div>
-            <div className="bookmark-search">
-              <input className="bookmark-search-form"
-                     type="text"
-                     placeholder="Search..."
-                     onChange={this.onSearchBookmarks.bind(this)} />
+            <div className="bookmark-header">
+              <h2>Bookmarks</h2>
+              <div className="bookmark-search">
+                <input className="bookmark-search-form"
+                       type="text"
+                       placeholder="Search..."
+                       onChange={this.onSearchBookmarks.bind(this)} />
+              </div>
             </div>
             <ul className="wiki-page-list">
               {filteredBookmarks.map(page =>
