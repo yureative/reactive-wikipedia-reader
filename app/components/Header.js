@@ -8,6 +8,7 @@ export default class Header extends Component {
         <h1>Reactive Wikipedia Reader</h1>
         <ul className="nav">
           <li><Link to="/">Home</Link></li>
+          <li><Link to="/bookmarks">Bookmarks</Link></li>
         </ul>
       </section>
     )

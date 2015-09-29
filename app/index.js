@@ -7,6 +7,8 @@ import { Router, Route, IndexRoute } from 'react-router'
 import App from './containers/App'
 import WikiPageList from './components/WikiPageList'
 import WikiPage from './components/WikiPage'
+import Bookmarks from './components/Bookmarks'
+import BookmarkedPage from './components/BookmarkedPage'
 
 const history = createHashHistory()
 const store = configureStore()
@@ -19,6 +21,8 @@ React.render(
           <IndexRoute component={WikiPageList} />
           <Route path="pages" componsent={WikiPageList} />
           <Route path="page/:id" component={WikiPage} />
+          <Route path="bookmarks" component={Bookmarks} />
+          <Route path="bookmark/:id" component={BookmarkedPage} />
         </Route>
       </Router>
     }
