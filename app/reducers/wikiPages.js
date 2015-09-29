@@ -32,14 +32,12 @@ export default function wikiPages(state = [], action) {
         page
     )
 
-/*
   case REMOVE_FROM_BOOKMARKS:
     return state.map(page =>
       page.id == action.id ?
         Object.assign(page, { bookmarked: false }) :
         page
     )
-*/
 
   default:
     return state
