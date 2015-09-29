@@ -26,6 +26,10 @@ class App extends Component {
         <section className="main">
           {this.props.children}
         </section>
+        <section className="footer">
+          <hr/>
+          <a className="copyright" href="https://github.com/urelx/reactive-wikipedia-reader">Created by Y.Yamanaka</a>
+        </section>
       </div>
     )
   }

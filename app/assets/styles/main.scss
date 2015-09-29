@@ -195,4 +195,12 @@ body {
       }
     }
   }
+  .footer {
+    clear: both;
+    margin: 10px;
+    .copyright {
+      font-size: 0.7em;
+      color: gray;
+    }
+  }
 }
