@@ -28,7 +28,10 @@ class WikiPageList extends Component {
           )}
         </ul>
         <div className="refresh-wiki-page">
-          <button onClick={() => dispatch(refreshWikiPages())}>fetch new pages</button>
+          <button onClick={() => dispatch(refreshWikiPages())}>
+            <img className="icon" src={require('../assets/images/icon/sync-01.svg')} />
+            Fetch new pages
+          </button>
         </div>
       </div>
     )

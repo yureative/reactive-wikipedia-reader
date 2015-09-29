@@ -113,12 +113,17 @@ body {
     .refresh-wiki-page {
       clear: both;
       button {
-        padding: 4px 14px;
+        font-weight: bold;
+        padding: 20px 10px;
+        width: auto;
       }
     }
     .back-previous-page,
+    .refresh-wiki-page,
     .bookmark-page {
-      a, .wiki-page-bookmarked {
+      a, button, .wiki-page-bookmarked {
+        font-size: 1em;
+        border-style: none;
         text-align: center;
         color: black;
         width: 200px;
@@ -134,7 +139,7 @@ body {
           vertical-align: middle;
         }
       }
-      a {
+      a, button {
         background-color: rgb(208, 207, 210);
         cursor: pointer;
         text-decoration: none;
