@@ -29,7 +29,8 @@ export function fetchWikipediaPageDetail(pageId) {
   let params = {
     action: 'query',
     pageids: pageId,
-    prop: 'categories|images',
+    prop: 'info|categories|images',
+    inprop: 'url',
     format: 'json'
   }
 
@@ -43,6 +44,7 @@ export function fetchWikipediaPageDetail(pageId) {
     return {
       id: pageId,
       title: page.title,
+      originalUrl: page.fullurl,
       images: page.images ? page.images.map(img =>
         ({ title: img.title })
       ) : [],
