@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
+import { removeFromBookmarks } from '../actions/bookmarks'
 
 class Bookmarks extends Component {
   static get propTypes() {
@@ -26,12 +27,21 @@ class Bookmarks extends Component {
                   <img className="icon" src={require('../assets/images/icon/arrow-right-01.svg')} />
                   {page.title}
                 </Link>
+                <div className="action-button">
+                  <img className="icon delete"
+                       onClick={this.onDeleteBookmark.bind(this, page.id)}
+                       src={require('../assets/images/icon/remove-01.svg')} />
+                </div>
               </li>
             )}
           </ul>
         }
       </div>
     )
+  }
+
+  onDeleteBookmark(pageId) {
+    this.props.dispatch(removeFromBookmarks(pageId))
   }
 }
 
