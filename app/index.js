@@ -19,7 +19,7 @@ React.render(
       <Router history={history}>
         <Route path="/" component={App}>
           <IndexRoute component={WikiPageList} />
-          <Route path="pages" componsent={WikiPageList} />
+          <Route path="pages" component={WikiPageList} />
           <Route path="page/:id" component={WikiPage} />
           <Route path="bookmarks" component={Bookmarks} />
           <Route path="bookmark/:id" component={BookmarkedPage} />
