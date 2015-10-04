@@ -37,8 +37,10 @@
     "webpack-dev-server": "^1.11.0"
   },
   "dependencies": {
+    "firebase": "^2.3.1",
     "history": "^1.10.2",
     "react": "^0.13.3",
+    "react-dropdown-button": "^1.0.11",
     "react-redux": "^2.1.2",
     "react-router": "^1.0.0-rc1",
     "redux": "^3.0.0",
