@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react'
 import { Router, Route, Link } from 'react-router'
-import { firebase } from '../api/firebase'
 import DDButton from 'react-dropdown-button'
 
 export default class Header extends Component {
