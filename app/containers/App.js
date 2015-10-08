@@ -5,11 +5,12 @@ import { connect } from 'react-redux'
 import '../assets/styles/main.scss'
 import Header from '../components/Header'
 import WikiPageList from '../components/WikiPageList'
-import * as WikiPageActions from '../actions/wikiPage'
+import * as AuthActions from '../actions/auth'
 
 class App extends Component {
   static get propTypes() {
     return {
+      authData: PropTypes.object.isRequired,
       wikiPages: PropTypes.array.isRequired,
       dispatch: PropTypes.func.isRequired,
       children: PropTypes.node
@@ -17,12 +18,12 @@ class App extends Component {
   }
 
   render() {
-    const { wikiPages, dispatch } = this.props
-    const actions = bindActionCreators(WikiPageActions, dispatch)
+    const { authData, wikiPages, dispatch } = this.props
+    const authActions = bindActionCreators(AuthActions, dispatch)
 
     return (
       <div>
-        <Header />
+        <Header authData={authData} {...authActions} />
         <section className="main">
           {this.props.children}
         </section>
@@ -37,6 +38,7 @@ class App extends Component {
 
 function mapStateToProps(state) {
   return {
+    authData: state.authData,
     wikiPages: state.wikiPages
   }
 }

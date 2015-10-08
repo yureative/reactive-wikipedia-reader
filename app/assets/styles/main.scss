@@ -8,7 +8,14 @@ body {
   }
   .header {
     margin: 10px;
+    .user-menu {
+      float: right;
+      a {
+        border: 0 !important;
+      }
+    }
     ul.nav {
+      clear: both;
       padding: 0;
       list-style-type: none;
       li {

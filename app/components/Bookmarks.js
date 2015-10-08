@@ -1,7 +1,12 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
-import { removeFromBookmarks, searchBookmarks } from '../actions/bookmarks'
+import {
+  removeFromBookmarks,
+  searchBookmarks,
+  syncBookmarks
+} from '../actions/bookmarks'
+import firebase from '../api/firebase'
 
 class Bookmarks extends Component {
   static get propTypes() {
@@ -11,9 +16,15 @@ class Bookmarks extends Component {
     }
   }
 
-  constructor(props, context) {
-    super(props, context)
+  componentWillMount() {
     this.state = { searchWord: '' }
+    const { bookmarks, dispatch } = this.props
+
+    firebase().baseRef.onAuth(authData => {
+      if (authData) {
+        dispatch(syncBookmarks(authData.uid, bookmarks))
+      }
+    })
   }
 
   filterBookmarks(bookmarks) {
